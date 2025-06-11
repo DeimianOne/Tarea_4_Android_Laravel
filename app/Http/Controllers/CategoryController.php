@@ -12,8 +12,11 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = $request->categories()->get();
+        // $categories = $request->categories()->get();
 
+        // return response()->json($categories);
+
+        $categories = Category::all();
         return response()->json($categories);
     }
 
@@ -34,13 +37,14 @@ class CategoryController extends Controller
             'name' => 'required|string|unique:categories|max:20',
             'image' => 'nullable|string',
         ], [
-            'name.required' => 'El nombre de la categoria es obligatorio',
-            'name.string' => 'El nombre de la categoria debe ser un string',
-            'name.unique' => 'El nombre de la categoria debe ser unico',
-            'name.max' => 'El nombre de la categoria no puede superar 20 caracteres',
+            'name.required' => 'El nombre de la categoría es obligatorio',
+            'name.string' => 'El nombre de la categoría debe ser un string',
+            'name.unique' => 'El nombre de la categoría debe ser único',
+            'name.max' => 'El nombre de la categoría no puede superar 20 caracteres',
         ]);
 
-        $category = $request->categories()->create($request->only('name', 'image'));
+        $category = Category::create($request->only('name', 'image'));
+        // $category = $request->categories()->create($request->only('name', 'image'));
 
         return response()->json($category, 201);
 
