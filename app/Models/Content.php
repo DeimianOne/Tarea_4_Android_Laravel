@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     protected $fillable = [
+        'category_name',
         'name',
         'description',
         'image',
