@@ -92,7 +92,7 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
-        //
+        return response()->json($content);
     }
 
     /**
