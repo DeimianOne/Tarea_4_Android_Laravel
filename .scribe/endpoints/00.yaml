@@ -222,7 +222,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
+        content: '[{"id":3,"category_name":"hola","name":"feo","description":"Dolores dolorum amet iste laborum eius est dolor.","image":"consequatur","duration":45,"number_of_episodes":null,"genre":null,"created_at":"2025-06-15T03:39:00.000000Z","updated_at":"2025-06-15T03:39:00.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -238,13 +238,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/categories/{category_id}/contents'
+    uri: 'api/categories/{name}/contents'
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'obtener contenidos por categoria'
       description: ''
       authenticated: false
       custom: []
@@ -252,18 +252,18 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      category_id:
-        name: category_id
-        description: 'The ID of the category.'
+      name:
+        name: name
+        description: 'El nombre de la categoría. Ejemplo: Películas'
         required: true
-        example: 1
-        type: integer
+        example: consequatur
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 1
+      name: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -272,12 +272,18 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          [
+            {
+              "id": 1,
+              "category_name": "Películas",
+              "name": "Matrix",
+              "description": "Ciencia ficción",
+              ...
+            }
+          ]
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []
@@ -413,14 +419,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -531,14 +537,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

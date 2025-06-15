@@ -18,9 +18,28 @@ class ContentController extends Controller
         return response()->json($contents);
     }
 
-    public function indexByCategory(Category $category)
+    /**
+     * obtener contenidos por categoria
+     *
+     * @urlParam name string required El nombre de la categoría. Ejemplo: Películas
+     * @response 200 [
+     *   {
+     *     "id": 1,
+     *     "category_name": "Películas",
+     *     "name": "Matrix",
+     *     "description": "Ciencia ficción",
+     *     ...
+     *   }
+     * ]
+     */
+    public function indexByCategory($name)
     {
-        $contents = Content::where('category_name', $category->name)->get();
+        $contents = Content::where('category_name', $name)->get();
+
+        if ($contents->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron contenidos para esta categoría'], 404);
+        }
+
         return response()->json($contents);
     }
 
