@@ -13,6 +13,7 @@ Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
 
 //contenidos
 Route::get('/contents', [ContentController::class, 'index']);
+Route::get('/categories/{category}/contents', [ContentController::class, 'indexByCategory']);
 Route::post('/contents', [ContentController::class, 'store']);
 Route::put('/contents/{content}', [ContentController::class, 'update']);
 // Route::patch('/contents/{content}', [ContentController::class, 'update']);

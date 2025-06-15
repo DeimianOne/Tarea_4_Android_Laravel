@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -14,6 +15,12 @@ class ContentController extends Controller
     public function index()
     {
         $contents = Content::all();
+        return response()->json($contents);
+    }
+
+    public function indexByCategory(Category $category)
+    {
+        $contents = Content::where('category_name', $category->name)->get();
         return response()->json($contents);
     }
 

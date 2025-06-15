@@ -86,6 +86,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-contents">
                                 <a href="#endpoints-GETapi-contents">Display a listing of the resource.</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-categories--category_id--contents">
+                                <a href="#endpoints-GETapi-categories--category_id--contents">GET api/categories/{category_id}/contents</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-contents">
                                 <a href="#endpoints-POSTapi-contents">Store a newly created resource in storage.</a>
                             </li>
@@ -106,7 +109,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 14, 2025</li>
+        <li>Last updated: June 15, 2025</li>
     </ul>
 </div>
 
@@ -184,13 +187,6 @@ access-control-allow-origin: *
         &quot;image&quot;: &quot;hola&quot;,
         &quot;created_at&quot;: &quot;2025-06-11T08:56:19.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-06-14T03:45:47.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 3,
-        &quot;name&quot;: &quot;libro&quot;,
-        &quot;image&quot;: null,
-        &quot;created_at&quot;: &quot;2025-06-14T04:43:52.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-14T05:02:39.000000Z&quot;
     }
 ]</code>
  </pre>
@@ -730,20 +726,7 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;id&quot;: 1,
-        &quot;category_name&quot;: &quot;hola&quot;,
-        &quot;name&quot;: &quot;mqeopfuudtd&quot;,
-        &quot;description&quot;: &quot;Dolores d&quot;,
-        &quot;image&quot;: &quot;consequatur&quot;,
-        &quot;duration&quot;: 45,
-        &quot;number_of_episodes&quot;: null,
-        &quot;genre&quot;: null,
-        &quot;created_at&quot;: &quot;2025-06-14T04:42:26.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-06-14T04:42:26.000000Z&quot;
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-contents" hidden>
@@ -816,6 +799,140 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                    <h2 id="endpoints-GETapi-categories--category_id--contents">GET api/categories/{category_id}/contents</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-categories--category_id--contents">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/categories/1/contents" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/categories/1/contents"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-categories--category_id--contents">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">[]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-categories--category_id--contents" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-categories--category_id--contents"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-categories--category_id--contents"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-categories--category_id--contents" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-categories--category_id--contents">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-categories--category_id--contents" data-method="GET"
+      data-path="api/categories/{category_id}/contents"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-categories--category_id--contents', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories--category_id--contents"
+                    onclick="tryItOut('GETapi-categories--category_id--contents');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories--category_id--contents"
+                    onclick="cancelTryOut('GETapi-categories--category_id--contents');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories--category_id--contents"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/categories/{category_id}/contents</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-categories--category_id--contents"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-categories--category_id--contents"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="category_id"                data-endpoint="GETapi-categories--category_id--contents"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the category. Example: <code>1</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-POSTapi-contents">Store a newly created resource in storage.</h2>
 
@@ -1037,7 +1154,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/contents/1" \
+    "http://localhost:8000/api/contents/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1054,7 +1171,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/1"
+    "http://localhost:8000/api/contents/17"
 );
 
 const headers = {
@@ -1158,10 +1275,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="PUTapi-contents--content_id-"
-               value="1"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>1</code></p>
+<p>The ID of the content. Example: <code>17</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1256,14 +1373,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/contents/1" \
+    "http://localhost:8000/api/contents/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/1"
+    "http://localhost:8000/api/contents/17"
 );
 
 const headers = {
@@ -1356,10 +1473,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="DELETEapi-contents--content_id-"
-               value="1"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>1</code></p>
+<p>The ID of the content. Example: <code>17</code></p>
             </div>
                     </form>
 

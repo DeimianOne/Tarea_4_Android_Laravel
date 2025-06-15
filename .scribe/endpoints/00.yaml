@@ -27,7 +27,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[{"id":1,"name":"hola","image":"hola","created_at":"2025-06-11T08:56:19.000000Z","updated_at":"2025-06-14T03:45:47.000000Z"},{"id":3,"name":"libro","image":null,"created_at":"2025-06-14T04:43:52.000000Z","updated_at":"2025-06-14T05:02:39.000000Z"}]'
+        content: '[{"id":1,"name":"hola","image":"hola","created_at":"2025-06-11T08:56:19.000000Z","updated_at":"2025-06-14T03:45:47.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -222,7 +222,57 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[{"id":1,"category_name":"hola","name":"mqeopfuudtd","description":"Dolores d","image":"consequatur","duration":45,"number_of_episodes":null,"genre":null,"created_at":"2025-06-14T04:42:26.000000Z","updated_at":"2025-06-14T04:42:26.000000Z"}]'
+        content: '[]'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/categories/{category_id}/contents'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      category_id:
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      category_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -363,14 +413,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 1
+      content_id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -481,14 +531,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 1
+      content_id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
