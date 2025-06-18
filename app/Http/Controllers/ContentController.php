@@ -70,11 +70,6 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //transformar numero de episodios vacio a string para validacion
-        $request->merge([
-            'number_of_episodes' => $request->number_of_episodes === '' ? null : $request->number_of_episodes,
-        ]);
-
         //validaciones
         $validated = $request->validate([
             'category_name' => 'required|string|exists:categories,name',
@@ -96,7 +91,7 @@ class ContentController extends Controller
             'description.string' => 'La descripción del contenido debe ser un string',
             'duration.integer' => 'La duración debe ser un número',
             'duration.min' => 'La duración no puede ser negativa',
-            'number_of_episodes.integer' => 'El número de episodios debe ser un número entero',
+            'number_of_episodes.integer' => 'El número de episodios debe ser un número',
             'number_of_episodes.min' => 'El número de episodios no puede ser negativo',
             'genre.string' => 'El género del anime debe ser un string',
             'image.image' => 'El archivo debe ser una imagen.',
@@ -134,6 +129,7 @@ class ContentController extends Controller
     /**
      * Actualiza un contenido existente.
      *
+     * @urlParam content int required ID del contenido que se va a actualizar. Ejemplo: 10
      *
      * @bodyParam category_name string required Nombre de la categoría a la que pertenece el contenido. Ejemplo: Serie
      * @bodyParam name string required Nombre del contenido. Ejemplo: Stranger Things 2
@@ -158,11 +154,6 @@ class ContentController extends Controller
      */
     public function update(Request $request, Content $content)
     {
-        //transformar numero de episodios vacio a string para validacion
-        $request->merge([
-            'number_of_episodes' => $request->number_of_episodes === '' ? null : $request->number_of_episodes,
-        ]);
-
         //validaciones
         $validated = $request->validate([
             'category_name' => 'required|string|exists:categories,name',
@@ -189,7 +180,7 @@ class ContentController extends Controller
             'description.string' => 'La descripción del contenido debe ser un string',
             'duration.integer' => 'La duración debe ser un número',
             'duration.min' => 'La duración no puede ser negativa',
-            'number_of_episodes.integer' => 'El número de episodios debe ser un número entero',
+            'number_of_episodes.integer' => 'El número de episodios debe ser un número',
             'number_of_episodes.min' => 'El número de episodios no puede ser negativo',
             'genre.string' => 'El género del anime debe ser un string',
             'image.image' => 'El archivo debe ser una imagen.',

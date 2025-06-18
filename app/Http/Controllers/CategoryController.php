@@ -75,6 +75,7 @@ class CategoryController extends Controller
     /**
      * Actualiza una categoría existente.
      *
+     * @urlParam category int required El ID de la categoría a actualizar. Ejemplo: 5
      *
      * @bodyParam name string required El nuevo nombre de la categoría. Ejemplo: Animes Actualizados
      * @bodyParam image file La nueva imagen para la categoría (opcional).
