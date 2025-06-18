@@ -27,7 +27,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
+        content: '[{"id":1,"name":"hola","image":"hola","created_at":"2025-06-11T08:56:19.000000Z","updated_at":"2025-06-14T03:45:47.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -61,14 +61,14 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -76,11 +76,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Category] 17"
-          }
+        status: 200
+        content: '{"id":1,"name":"hola","image":"hola","created_at":"2025-06-11T08:56:19.000000Z","updated_at":"2025-06-14T03:45:47.000000Z"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -102,12 +99,12 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Crea una nueva categoría'
+      title: 'Store a newly created resource in storage.'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
@@ -116,9 +113,9 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'El nombre de la categoría. Ejemplo: Animes'
+        description: 'Must not be greater than 20 characters.'
         required: true
-        example: consequatur
+        example: vmqeopfuudtdsufvy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -126,32 +123,19 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'La imagen para la categoría (opcional).'
+        description: ''
         required: false
-        example: null
-        type: file
+        example: consequatur
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      name: consequatur
-    fileParameters:
-      image: null
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "id": 5,
-            "name": "Deportes",
-            "image": "storage/category_images/imagen_subida.jpg",
-            "created_at": "2025-06-18T12:00:00Z",
-            "updated_at": "2025-06-18T12:00:00Z"
-          }
-        headers: []
-        description: ''
-        custom: []
+      name: vmqeopfuudtdsufvy
+      image: consequatur
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -167,45 +151,34 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Actualiza una categoría existente.'
+      title: 'Update the specified resource in storage.'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters:
       category_id:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      category:
-        name: category
-        description: 'El ID de la categoría a actualizar. Ejemplo: 5'
-        required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
-      category: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'El nuevo nombre de la categoría. Ejemplo: Animes Actualizados'
+        description: 'Must not be greater than 20 characters.'
         required: true
-        example: consequatur
+        example: vmqeopfuudtdsufvy
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -213,32 +186,19 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'La nueva imagen para la categoría (opcional).'
+        description: ''
         required: false
-        example: null
-        type: file
+        example: consequatur
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      name: consequatur
-    fileParameters:
-      image: null
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "id": 5,
-            "name": "Deportes Actualizados",
-            "image": "storage/category_images/nueva_imagen.jpg",
-            "created_at": "2025-06-18T12:00:00Z",
-            "updated_at": "2025-06-18T14:00:00Z"
-          }
-        headers: []
-        description: ''
-        custom: []
+      name: vmqeopfuudtdsufvy
+      image: consequatur
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -266,14 +226,14 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -312,7 +272,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
+        content: '[{"id":3,"category_name":"hola","name":"feo","description":"Dolores dolorum amet iste laborum eius est dolor.","image":"consequatur","duration":45,"number_of_episodes":null,"genre":null,"created_at":"2025-06-15T03:39:00.000000Z","updated_at":"2025-06-15T03:39:00.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -346,14 +306,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -361,11 +321,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Content] 17"
-          }
+        status: 200
+        content: '{"id":3,"category_name":"hola","name":"feo","description":"Dolores dolorum amet iste laborum eius est dolor.","image":"consequatur","duration":45,"number_of_episodes":null,"genre":null,"created_at":"2025-06-15T03:39:00.000000Z","updated_at":"2025-06-15T03:39:00.000000Z"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -443,12 +400,12 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Crea un nuevo contenido.'
+      title: 'Store a newly created resource in storage.'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
@@ -457,7 +414,7 @@ endpoints:
     bodyParameters:
       category_name:
         name: category_name
-        description: 'Nombre de la categoría a la que pertenece el contenido. Ejemplo: Serie'
+        description: 'The <code>name</code> of an existing record in the categories table.'
         required: true
         example: consequatur
         type: string
@@ -467,9 +424,9 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Nombre del contenido. Ejemplo: Stranger Things'
+        description: 'Must not be greater than 30 characters.'
         required: true
-        example: consequatur
+        example: mqeopfuudtdsufvyvddqa
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -477,8 +434,8 @@ endpoints:
         custom: []
       description:
         name: description
-        description: 'Descripción del contenido. Ejemplo: Serie de misterio y ciencia ficción.'
-        required: false
+        description: ''
+        required: true
         example: 'Dolores dolorum amet iste laborum eius est dolor.'
         type: string
         enumValues: []
@@ -487,19 +444,19 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'Imagen del contenido (opcional).'
+        description: ''
         required: false
-        example: null
-        type: file
+        example: consequatur
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
       duration:
         name: duration
-        description: 'Duración en minutos. Ejemplo: 50'
+        description: 'Must be at least 0.'
         required: false
-        example: 17
+        example: 45
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -507,9 +464,9 @@ endpoints:
         custom: []
       number_of_episodes:
         name: number_of_episodes
-        description: 'Número de episodios (opcional). Ejemplo: 8'
+        description: 'Must be at least 0.'
         required: false
-        example: 17
+        example: 56
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -517,7 +474,7 @@ endpoints:
         custom: []
       genre:
         name: genre
-        description: 'Género del contenido. Ejemplo: Ciencia ficción'
+        description: ''
         required: false
         example: consequatur
         type: string
@@ -527,32 +484,14 @@ endpoints:
         custom: []
     cleanBodyParameters:
       category_name: consequatur
-      name: consequatur
+      name: mqeopfuudtdsufvyvddqa
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      duration: 17
-      number_of_episodes: 17
+      image: consequatur
+      duration: 45
+      number_of_episodes: 56
       genre: consequatur
-    fileParameters:
-      image: null
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "id": 10,
-            "name": "Stranger Things",
-            "description": "Serie de misterio y ciencia ficción.",
-            "duration": 50,
-            "number_of_episodes": 8,
-            "genre": "Ciencia ficción",
-            "category_id": 3,
-            "image": "storage/content_images/stranger_things.jpg",
-            "created_at": "2025-06-18T14:00:00Z",
-            "updated_at": "2025-06-18T14:00:00Z"
-          }
-        headers: []
-        description: ''
-        custom: []
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -568,43 +507,32 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Actualiza un contenido existente.'
+      title: 'Update the specified resource in storage.'
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters:
       content_id:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      content:
-        name: content
-        description: 'ID del contenido que se va a actualizar. Ejemplo: 10'
-        required: true
-        example: 17
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
-      content: 17
+      content_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       category_name:
         name: category_name
-        description: 'Nombre de la categoría a la que pertenece el contenido. Ejemplo: Serie'
+        description: 'The <code>name</code> of an existing record in the categories table.'
         required: true
         example: consequatur
         type: string
@@ -614,9 +542,9 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Nombre del contenido. Ejemplo: Stranger Things 2'
+        description: 'Must not be greater than 30 characters.'
         required: true
-        example: consequatur
+        example: mqeopfuudtdsufvyvddqa
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -624,8 +552,8 @@ endpoints:
         custom: []
       description:
         name: description
-        description: 'Descripción del contenido. Ejemplo: Serie de misterio y ciencia ficción.'
-        required: false
+        description: ''
+        required: true
         example: 'Dolores dolorum amet iste laborum eius est dolor.'
         type: string
         enumValues: []
@@ -634,19 +562,19 @@ endpoints:
         custom: []
       image:
         name: image
-        description: 'Imagen del contenido (opcional).'
+        description: ''
         required: false
-        example: null
-        type: file
+        example: consequatur
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
       duration:
         name: duration
-        description: 'Duración en minutos. Ejemplo: 50'
+        description: 'Must be at least 0.'
         required: false
-        example: 17
+        example: 45
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -654,9 +582,9 @@ endpoints:
         custom: []
       number_of_episodes:
         name: number_of_episodes
-        description: 'Número de episodios (opcional). Ejemplo: 8'
+        description: 'Must be at least 0.'
         required: false
-        example: 17
+        example: 56
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -664,7 +592,7 @@ endpoints:
         custom: []
       genre:
         name: genre
-        description: 'Género del contenido. Ejemplo: Ciencia ficción'
+        description: ''
         required: false
         example: consequatur
         type: string
@@ -674,32 +602,14 @@ endpoints:
         custom: []
     cleanBodyParameters:
       category_name: consequatur
-      name: consequatur
+      name: mqeopfuudtdsufvyvddqa
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      duration: 17
-      number_of_episodes: 17
+      image: consequatur
+      duration: 45
+      number_of_episodes: 56
       genre: consequatur
-    fileParameters:
-      image: null
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "id": 10,
-            "name": "Stranger Things",
-            "description": "Serie de misterio y ciencia ficción.",
-            "duration": 50,
-            "number_of_episodes": 8,
-            "genre": "Ciencia ficción",
-            "category_id": 3,
-            "image": "storage/content_images/stranger_things_updated.jpg",
-            "created_at": "2025-06-18T14:00:00Z",
-            "updated_at": "2025-06-18T14:30:00Z"
-          }
-        headers: []
-        description: ''
-        custom: []
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -727,14 +637,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

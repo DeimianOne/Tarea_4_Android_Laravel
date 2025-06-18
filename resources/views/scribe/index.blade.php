@@ -78,10 +78,10 @@
                                 <a href="#endpoints-GETapi-categories--category_id-">Display the specified resource.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-categories">
-                                <a href="#endpoints-POSTapi-categories">Crea una nueva categoría</a>
+                                <a href="#endpoints-POSTapi-categories">Store a newly created resource in storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-categories--category_id-">
-                                <a href="#endpoints-PUTapi-categories--category_id-">Actualiza una categoría existente.</a>
+                                <a href="#endpoints-PUTapi-categories--category_id-">Update the specified resource in storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-categories--category_id-">
                                 <a href="#endpoints-DELETEapi-categories--category_id-">Remove the specified resource from storage.</a>
@@ -96,10 +96,10 @@
                                 <a href="#endpoints-GETapi-categories--name--contents">obtener contenidos por categoria</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-contents">
-                                <a href="#endpoints-POSTapi-contents">Crea un nuevo contenido.</a>
+                                <a href="#endpoints-POSTapi-contents">Store a newly created resource in storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-contents--content_id-">
-                                <a href="#endpoints-PUTapi-contents--content_id-">Actualiza un contenido existente.</a>
+                                <a href="#endpoints-PUTapi-contents--content_id-">Update the specified resource in storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-contents--content_id-">
                                 <a href="#endpoints-DELETEapi-contents--content_id-">Remove the specified resource from storage.</a>
@@ -115,7 +115,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 18, 2025</li>
+        <li>Last updated: June 15, 2025</li>
     </ul>
 </div>
 
@@ -186,7 +186,15 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;hola&quot;,
+        &quot;image&quot;: &quot;hola&quot;,
+        &quot;created_at&quot;: &quot;2025-06-11T08:56:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-14T03:45:47.000000Z&quot;
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-categories" hidden>
@@ -273,14 +281,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/categories/17" \
+    --get "http://localhost:8000/api/categories/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
@@ -297,7 +305,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-categories--category_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -309,7 +317,11 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Category] 17&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;hola&quot;,
+    &quot;image&quot;: &quot;hola&quot;,
+    &quot;created_at&quot;: &quot;2025-06-11T08:56:19.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-06-14T03:45:47.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -389,14 +401,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="GETapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-POSTapi-categories">Crea una nueva categoría</h2>
+                    <h2 id="endpoints-POSTapi-categories">Store a newly created resource in storage.</h2>
 
 <p>
 </p>
@@ -410,10 +422,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/categories" \
-    --header "Content-Type: multipart/form-data" \
+    --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --form "name=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEA1.tmp" </code></pre></div>
+    --data "{
+    \"name\": \"vmqeopfuudtdsufvy\",
+    \"image\": \"consequatur\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -422,37 +437,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
-const body = new FormData();
-body.append('name', 'consequatur');
-body.append('image', document.querySelector('input[name="image"]').files[0]);
+let body = {
+    "name": "vmqeopfuudtdsufvy",
+    "image": "consequatur"
+};
 
 fetch(url, {
     method: "POST",
     headers,
-    body,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-POSTapi-categories">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 5,
-    &quot;name&quot;: &quot;Deportes&quot;,
-    &quot;image&quot;: &quot;storage/category_images/imagen_subida.jpg&quot;,
-    &quot;created_at&quot;: &quot;2025-06-18T12:00:00Z&quot;,
-    &quot;updated_at&quot;: &quot;2025-06-18T12:00:00Z&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-POSTapi-categories" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-categories"></span>:
@@ -471,7 +474,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-categories" data-method="POST"
       data-path="api/categories"
       data-authed="0"
-      data-hasfiles="1"
+      data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-categories', this);">
@@ -506,10 +509,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-categories"
-               value="multipart/form-data"
+               value="application/json"
                data-component="header">
     <br>
-<p>Example: <code>multipart/form-data</code></p>
+<p>Example: <code>application/json</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -529,25 +532,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-categories"
-               value="consequatur"
+               value="vmqeopfuudtdsufvy"
                data-component="body">
     <br>
-<p>El nombre de la categoría. Ejemplo: Animes Example: <code>consequatur</code></p>
+<p>Must not be greater than 20 characters. Example: <code>vmqeopfuudtdsufvy</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="file" style="display: none"
+                <input type="text" style="display: none"
                               name="image"                data-endpoint="POSTapi-categories"
-               value=""
+               value="consequatur"
                data-component="body">
     <br>
-<p>La imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEA1.tmp</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-PUTapi-categories--category_id-">Actualiza una categoría existente.</h2>
+                    <h2 id="endpoints-PUTapi-categories--category_id-">Update the specified resource in storage.</h2>
 
 <p>
 </p>
@@ -560,50 +563,41 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/categories/17" \
-    --header "Content-Type: multipart/form-data" \
+    "http://localhost:8000/api/categories/1" \
+    --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --form "name=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEB3.tmp" </code></pre></div>
+    --data "{
+    \"name\": \"vmqeopfuudtdsufvy\",
+    \"image\": \"consequatur\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
-const body = new FormData();
-body.append('name', 'consequatur');
-body.append('image', document.querySelector('input[name="image"]').files[0]);
+let body = {
+    "name": "vmqeopfuudtdsufvy",
+    "image": "consequatur"
+};
 
 fetch(url, {
     method: "PUT",
     headers,
-    body,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-PUTapi-categories--category_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 5,
-    &quot;name&quot;: &quot;Deportes Actualizados&quot;,
-    &quot;image&quot;: &quot;storage/category_images/nueva_imagen.jpg&quot;,
-    &quot;created_at&quot;: &quot;2025-06-18T12:00:00Z&quot;,
-    &quot;updated_at&quot;: &quot;2025-06-18T14:00:00Z&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PUTapi-categories--category_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-categories--category_id-"></span>:
@@ -622,7 +616,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-categories--category_id-" data-method="PUT"
       data-path="api/categories/{category_id}"
       data-authed="0"
-      data-hasfiles="1"
+      data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-categories--category_id-', this);">
@@ -657,10 +651,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-categories--category_id-"
-               value="multipart/form-data"
+               value="application/json"
                data-component="header">
     <br>
-<p>Example: <code>multipart/form-data</code></p>
+<p>Example: <code>application/json</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -680,21 +674,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="category"                data-endpoint="PUTapi-categories--category_id-"
-               value="17"
-               data-component="url">
-    <br>
-<p>El ID de la categoría a actualizar. Ejemplo: 5 Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -703,21 +686,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-categories--category_id-"
-               value="consequatur"
+               value="vmqeopfuudtdsufvy"
                data-component="body">
     <br>
-<p>El nuevo nombre de la categoría. Ejemplo: Animes Actualizados Example: <code>consequatur</code></p>
+<p>Must not be greater than 20 characters. Example: <code>vmqeopfuudtdsufvy</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="file" style="display: none"
+                <input type="text" style="display: none"
                               name="image"                data-endpoint="PUTapi-categories--category_id-"
-               value=""
+               value="consequatur"
                data-component="body">
     <br>
-<p>La nueva imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEB3.tmp</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
@@ -734,14 +717,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/categories/17" \
+    "http://localhost:8000/api/categories/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
@@ -834,10 +817,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="DELETEapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -889,7 +872,20 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 3,
+        &quot;category_name&quot;: &quot;hola&quot;,
+        &quot;name&quot;: &quot;feo&quot;,
+        &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+        &quot;image&quot;: &quot;consequatur&quot;,
+        &quot;duration&quot;: 45,
+        &quot;number_of_episodes&quot;: null,
+        &quot;genre&quot;: null,
+        &quot;created_at&quot;: &quot;2025-06-15T03:39:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-15T03:39:00.000000Z&quot;
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-contents" hidden>
@@ -976,14 +972,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/contents/17" \
+    --get "http://localhost:8000/api/contents/3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/3"
 );
 
 const headers = {
@@ -1000,7 +996,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-contents--content_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1012,7 +1008,16 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Content] 17&quot;
+    &quot;id&quot;: 3,
+    &quot;category_name&quot;: &quot;hola&quot;,
+    &quot;name&quot;: &quot;feo&quot;,
+    &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+    &quot;image&quot;: &quot;consequatur&quot;,
+    &quot;duration&quot;: 45,
+    &quot;number_of_episodes&quot;: null,
+    &quot;genre&quot;: null,
+    &quot;created_at&quot;: &quot;2025-06-15T03:39:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-06-15T03:39:00.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -1092,10 +1097,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="GETapi-contents--content_id-"
-               value="17"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>3</code></p>
             </div>
                     </form>
 
@@ -1234,7 +1239,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-POSTapi-contents">Crea un nuevo contenido.</h2>
+                    <h2 id="endpoints-POSTapi-contents">Store a newly created resource in storage.</h2>
 
 <p>
 </p>
@@ -1248,15 +1253,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/contents" \
-    --header "Content-Type: multipart/form-data" \
+    --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --form "category_name=consequatur"\
-    --form "name=consequatur"\
-    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
-    --form "duration=17"\
-    --form "number_of_episodes=17"\
-    --form "genre=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEE4.tmp" </code></pre></div>
+    --data "{
+    \"category_name\": \"consequatur\",
+    \"name\": \"mqeopfuudtdsufvyvddqa\",
+    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
+    \"image\": \"consequatur\",
+    \"duration\": 45,
+    \"number_of_episodes\": 56,
+    \"genre\": \"consequatur\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -1265,47 +1273,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
-const body = new FormData();
-body.append('category_name', 'consequatur');
-body.append('name', 'consequatur');
-body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
-body.append('duration', '17');
-body.append('number_of_episodes', '17');
-body.append('genre', 'consequatur');
-body.append('image', document.querySelector('input[name="image"]').files[0]);
+let body = {
+    "category_name": "consequatur",
+    "name": "mqeopfuudtdsufvyvddqa",
+    "description": "Dolores dolorum amet iste laborum eius est dolor.",
+    "image": "consequatur",
+    "duration": 45,
+    "number_of_episodes": 56,
+    "genre": "consequatur"
+};
 
 fetch(url, {
     method: "POST",
     headers,
-    body,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-POSTapi-contents">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 10,
-    &quot;name&quot;: &quot;Stranger Things&quot;,
-    &quot;description&quot;: &quot;Serie de misterio y ciencia ficci&oacute;n.&quot;,
-    &quot;duration&quot;: 50,
-    &quot;number_of_episodes&quot;: 8,
-    &quot;genre&quot;: &quot;Ciencia ficci&oacute;n&quot;,
-    &quot;category_id&quot;: 3,
-    &quot;image&quot;: &quot;storage/content_images/stranger_things.jpg&quot;,
-    &quot;created_at&quot;: &quot;2025-06-18T14:00:00Z&quot;,
-    &quot;updated_at&quot;: &quot;2025-06-18T14:00:00Z&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-POSTapi-contents" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-contents"></span>:
@@ -1324,7 +1315,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-contents" data-method="POST"
       data-path="api/contents"
       data-authed="0"
-      data-hasfiles="1"
+      data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-contents', this);">
@@ -1359,10 +1350,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-contents"
-               value="multipart/form-data"
+               value="application/json"
                data-component="header">
     <br>
-<p>Example: <code>multipart/form-data</code></p>
+<p>Example: <code>application/json</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1385,7 +1376,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Nombre de la categoría a la que pertenece el contenido. Ejemplo: Serie Example: <code>consequatur</code></p>
+<p>The <code>name</code> of an existing record in the categories table. Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -1393,32 +1384,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-contents"
-               value="consequatur"
+               value="mqeopfuudtdsufvyvddqa"
                data-component="body">
     <br>
-<p>Nombre del contenido. Ejemplo: Stranger Things Example: <code>consequatur</code></p>
+<p>Must not be greater than 30 characters. Example: <code>mqeopfuudtdsufvyvddqa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-contents"
                value="Dolores dolorum amet iste laborum eius est dolor."
                data-component="body">
     <br>
-<p>Descripción del contenido. Ejemplo: Serie de misterio y ciencia ficción. Example: <code>Dolores dolorum amet iste laborum eius est dolor.</code></p>
+<p>Example: <code>Dolores dolorum amet iste laborum eius est dolor.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="file" style="display: none"
+                <input type="text" style="display: none"
                               name="image"                data-endpoint="POSTapi-contents"
-               value=""
+               value="consequatur"
                data-component="body">
     <br>
-<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEE4.tmp</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>duration</code></b>&nbsp;&nbsp;
@@ -1426,10 +1417,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="duration"                data-endpoint="POSTapi-contents"
-               value="17"
+               value="45"
                data-component="body">
     <br>
-<p>Duración en minutos. Ejemplo: 50 Example: <code>17</code></p>
+<p>Must be at least 0. Example: <code>45</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>number_of_episodes</code></b>&nbsp;&nbsp;
@@ -1437,10 +1428,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="number_of_episodes"                data-endpoint="POSTapi-contents"
-               value="17"
+               value="56"
                data-component="body">
     <br>
-<p>Número de episodios (opcional). Ejemplo: 8 Example: <code>17</code></p>
+<p>Must be at least 0. Example: <code>56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>genre</code></b>&nbsp;&nbsp;
@@ -1451,11 +1442,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Género del contenido. Ejemplo: Ciencia ficción Example: <code>consequatur</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-PUTapi-contents--content_id-">Actualiza un contenido existente.</h2>
+                    <h2 id="endpoints-PUTapi-contents--content_id-">Update the specified resource in storage.</h2>
 
 <p>
 </p>
@@ -1468,65 +1459,51 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/contents/17" \
-    --header "Content-Type: multipart/form-data" \
+    "http://localhost:8000/api/contents/3" \
+    --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --form "category_name=consequatur"\
-    --form "name=consequatur"\
-    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
-    --form "duration=17"\
-    --form "number_of_episodes=17"\
-    --form "genre=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEF6.tmp" </code></pre></div>
+    --data "{
+    \"category_name\": \"consequatur\",
+    \"name\": \"mqeopfuudtdsufvyvddqa\",
+    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
+    \"image\": \"consequatur\",
+    \"duration\": 45,
+    \"number_of_episodes\": 56,
+    \"genre\": \"consequatur\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/3"
 );
 
 const headers = {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
-const body = new FormData();
-body.append('category_name', 'consequatur');
-body.append('name', 'consequatur');
-body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
-body.append('duration', '17');
-body.append('number_of_episodes', '17');
-body.append('genre', 'consequatur');
-body.append('image', document.querySelector('input[name="image"]').files[0]);
+let body = {
+    "category_name": "consequatur",
+    "name": "mqeopfuudtdsufvyvddqa",
+    "description": "Dolores dolorum amet iste laborum eius est dolor.",
+    "image": "consequatur",
+    "duration": 45,
+    "number_of_episodes": 56,
+    "genre": "consequatur"
+};
 
 fetch(url, {
     method: "PUT",
     headers,
-    body,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-PUTapi-contents--content_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 10,
-    &quot;name&quot;: &quot;Stranger Things&quot;,
-    &quot;description&quot;: &quot;Serie de misterio y ciencia ficci&oacute;n.&quot;,
-    &quot;duration&quot;: 50,
-    &quot;number_of_episodes&quot;: 8,
-    &quot;genre&quot;: &quot;Ciencia ficci&oacute;n&quot;,
-    &quot;category_id&quot;: 3,
-    &quot;image&quot;: &quot;storage/content_images/stranger_things_updated.jpg&quot;,
-    &quot;created_at&quot;: &quot;2025-06-18T14:00:00Z&quot;,
-    &quot;updated_at&quot;: &quot;2025-06-18T14:30:00Z&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PUTapi-contents--content_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-contents--content_id-"></span>:
@@ -1545,7 +1522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-contents--content_id-" data-method="PUT"
       data-path="api/contents/{content_id}"
       data-authed="0"
-      data-hasfiles="1"
+      data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-contents--content_id-', this);">
@@ -1580,10 +1557,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-contents--content_id-"
-               value="multipart/form-data"
+               value="application/json"
                data-component="header">
     <br>
-<p>Example: <code>multipart/form-data</code></p>
+<p>Example: <code>application/json</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1603,21 +1580,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>content</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="content"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
-               data-component="url">
-    <br>
-<p>ID del contenido que se va a actualizar. Ejemplo: 10 Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>3</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1629,7 +1595,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Nombre de la categoría a la que pertenece el contenido. Ejemplo: Serie Example: <code>consequatur</code></p>
+<p>The <code>name</code> of an existing record in the categories table. Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -1637,32 +1603,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-contents--content_id-"
-               value="consequatur"
+               value="mqeopfuudtdsufvyvddqa"
                data-component="body">
     <br>
-<p>Nombre del contenido. Ejemplo: Stranger Things 2 Example: <code>consequatur</code></p>
+<p>Must not be greater than 30 characters. Example: <code>mqeopfuudtdsufvyvddqa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-contents--content_id-"
                value="Dolores dolorum amet iste laborum eius est dolor."
                data-component="body">
     <br>
-<p>Descripción del contenido. Ejemplo: Serie de misterio y ciencia ficción. Example: <code>Dolores dolorum amet iste laborum eius est dolor.</code></p>
+<p>Example: <code>Dolores dolorum amet iste laborum eius est dolor.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="file" style="display: none"
+                <input type="text" style="display: none"
                               name="image"                data-endpoint="PUTapi-contents--content_id-"
-               value=""
+               value="consequatur"
                data-component="body">
     <br>
-<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEF6.tmp</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>duration</code></b>&nbsp;&nbsp;
@@ -1670,10 +1636,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="duration"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
+               value="45"
                data-component="body">
     <br>
-<p>Duración en minutos. Ejemplo: 50 Example: <code>17</code></p>
+<p>Must be at least 0. Example: <code>45</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>number_of_episodes</code></b>&nbsp;&nbsp;
@@ -1681,10 +1647,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="number_of_episodes"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
+               value="56"
                data-component="body">
     <br>
-<p>Número de episodios (opcional). Ejemplo: 8 Example: <code>17</code></p>
+<p>Must be at least 0. Example: <code>56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>genre</code></b>&nbsp;&nbsp;
@@ -1695,7 +1661,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Género del contenido. Ejemplo: Ciencia ficción Example: <code>consequatur</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
         </form>
 
@@ -1712,14 +1678,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/contents/17" \
+    "http://localhost:8000/api/contents/3" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/3"
 );
 
 const headers = {
@@ -1812,10 +1778,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="DELETEapi-contents--content_id-"
-               value="17"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>3</code></p>
             </div>
                     </form>
 
