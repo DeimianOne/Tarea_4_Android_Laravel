@@ -186,7 +186,15 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;animes&quot;,
+        &quot;image&quot;: &quot;storage/category_images/6TdgNXF3rPGHLyPKgBk1yAHG1x2Zl51i3uTRKHyo.jpg&quot;,
+        &quot;created_at&quot;: &quot;2025-06-18T03:17:27.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-18T03:24:05.000000Z&quot;
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-categories" hidden>
@@ -273,14 +281,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/categories/17" \
+    --get "http://localhost:8000/api/categories/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
@@ -297,7 +305,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-categories--category_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -309,7 +317,11 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Category] 17&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;animes&quot;,
+    &quot;image&quot;: &quot;storage/category_images/6TdgNXF3rPGHLyPKgBk1yAHG1x2Zl51i3uTRKHyo.jpg&quot;,
+    &quot;created_at&quot;: &quot;2025-06-18T03:17:27.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-06-18T03:24:05.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -389,10 +401,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="GETapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -413,7 +425,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEA1.tmp" </code></pre></div>
+    --form "image=@C:\Users\damia\AppData\Local\Temp\phpD292.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -543,7 +555,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>La imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEA1.tmp</code></p>
+<p>La imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpD292.tmp</code></p>
         </div>
         </form>
 
@@ -560,16 +572,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/categories/17" \
+    "http://localhost:8000/api/categories/1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEB3.tmp" </code></pre></div>
+    --form "image=@C:\Users\damia\AppData\Local\Temp\phpD2A4.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
@@ -680,21 +692,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="PUTapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="category"                data-endpoint="PUTapi-categories--category_id-"
-               value="17"
-               data-component="url">
-    <br>
-<p>El ID de la categoría a actualizar. Ejemplo: 5 Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -717,7 +718,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>La nueva imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEB3.tmp</code></p>
+<p>La nueva imagen para la categoría (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpD2A4.tmp</code></p>
         </div>
         </form>
 
@@ -734,14 +735,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/categories/17" \
+    "http://localhost:8000/api/categories/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/categories/17"
+    "http://localhost:8000/api/categories/1"
 );
 
 const headers = {
@@ -834,10 +835,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="category_id"                data-endpoint="DELETEapi-categories--category_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the category. Example: <code>17</code></p>
+<p>The ID of the category. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -889,7 +890,20 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;category_name&quot;: &quot;animes&quot;,
+        &quot;name&quot;: &quot;losfeo&quot;,
+        &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+        &quot;image&quot;: &quot;storage/content_images/oBxXrpaTYvge3CJy32zogva1SYo1pUBwxENb5xE1.jpg&quot;,
+        &quot;duration&quot;: 17,
+        &quot;number_of_episodes&quot;: 1,
+        &quot;genre&quot;: null,
+        &quot;created_at&quot;: &quot;2025-06-18T03:28:38.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-06-18T03:28:38.000000Z&quot;
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-contents" hidden>
@@ -976,14 +990,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/contents/17" \
+    --get "http://localhost:8000/api/contents/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/1"
 );
 
 const headers = {
@@ -1000,7 +1014,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-contents--content_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1012,7 +1026,16 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Content] 17&quot;
+    &quot;id&quot;: 1,
+    &quot;category_name&quot;: &quot;animes&quot;,
+    &quot;name&quot;: &quot;losfeo&quot;,
+    &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+    &quot;image&quot;: &quot;storage/content_images/oBxXrpaTYvge3CJy32zogva1SYo1pUBwxENb5xE1.jpg&quot;,
+    &quot;duration&quot;: 17,
+    &quot;number_of_episodes&quot;: 1,
+    &quot;genre&quot;: null,
+    &quot;created_at&quot;: &quot;2025-06-18T03:28:38.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-06-18T03:28:38.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -1092,10 +1115,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="GETapi-contents--content_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>1</code></p>
             </div>
                     </form>
 
@@ -1256,7 +1279,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "duration=17"\
     --form "number_of_episodes=17"\
     --form "genre=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEE4.tmp" </code></pre></div>
+    --form "image=@C:\Users\damia\AppData\Local\Temp\phpD2E4.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1418,7 +1441,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEE4.tmp</code></p>
+<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpD2E4.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>duration</code></b>&nbsp;&nbsp;
@@ -1468,7 +1491,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/contents/17" \
+    "http://localhost:8000/api/contents/1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "category_name=consequatur"\
@@ -1477,12 +1500,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "duration=17"\
     --form "number_of_episodes=17"\
     --form "genre=consequatur"\
-    --form "image=@C:\Users\damia\AppData\Local\Temp\phpAEF6.tmp" </code></pre></div>
+    --form "image=@C:\Users\damia\AppData\Local\Temp\phpD2E6.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/1"
 );
 
 const headers = {
@@ -1603,21 +1626,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>content</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="content"                data-endpoint="PUTapi-contents--content_id-"
-               value="17"
-               data-component="url">
-    <br>
-<p>ID del contenido que se va a actualizar. Ejemplo: 10 Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1662,7 +1674,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpAEF6.tmp</code></p>
+<p>Imagen del contenido (opcional). Example: <code>C:\Users\damia\AppData\Local\Temp\phpD2E6.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>duration</code></b>&nbsp;&nbsp;
@@ -1712,14 +1724,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/contents/17" \
+    "http://localhost:8000/api/contents/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/contents/17"
+    "http://localhost:8000/api/contents/1"
 );
 
 const headers = {
@@ -1812,10 +1824,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="content_id"                data-endpoint="DELETEapi-contents--content_id-"
-               value="17"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the content. Example: <code>17</code></p>
+<p>The ID of the content. Example: <code>1</code></p>
             </div>
                     </form>
 

@@ -27,7 +27,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
+        content: '[{"id":1,"name":"animes","image":"storage\/category_images\/6TdgNXF3rPGHLyPKgBk1yAHG1x2Zl51i3uTRKHyo.jpg","created_at":"2025-06-18T03:17:27.000000Z","updated_at":"2025-06-18T03:24:05.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -61,14 +61,14 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -76,11 +76,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Category] 17"
-          }
+        status: 200
+        content: '{"id":1,"name":"animes","image":"storage\/category_images\/6TdgNXF3rPGHLyPKgBk1yAHG1x2Zl51i3uTRKHyo.jpg","created_at":"2025-06-18T03:17:27.000000Z","updated_at":"2025-06-18T03:24:05.000000Z"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -179,25 +176,14 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      category:
-        name: category
-        description: 'El ID de la categoría a actualizar. Ejemplo: 5'
-        required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
-      category: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -266,14 +252,14 @@ endpoints:
         name: category_id
         description: 'The ID of the category.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      category_id: 17
+      category_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -312,7 +298,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[]'
+        content: '[{"id":1,"category_name":"animes","name":"losfeo","description":"Dolores dolorum amet iste laborum eius est dolor.","image":"storage\/content_images\/oBxXrpaTYvge3CJy32zogva1SYo1pUBwxENb5xE1.jpg","duration":17,"number_of_episodes":1,"genre":null,"created_at":"2025-06-18T03:28:38.000000Z","updated_at":"2025-06-18T03:28:38.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -346,14 +332,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -361,11 +347,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Content] 17"
-          }
+        status: 200
+        content: '{"id":1,"category_name":"animes","name":"losfeo","description":"Dolores dolorum amet iste laborum eius est dolor.","image":"storage\/content_images\/oBxXrpaTYvge3CJy32zogva1SYo1pUBwxENb5xE1.jpg","duration":17,"number_of_episodes":1,"genre":null,"created_at":"2025-06-18T03:28:38.000000Z","updated_at":"2025-06-18T03:28:38.000000Z"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -580,25 +563,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      content:
-        name: content
-        description: 'ID del contenido que se va a actualizar. Ejemplo: 10'
-        required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
-      content: 17
+      content_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -727,14 +699,14 @@ endpoints:
         name: content_id
         description: 'The ID of the content.'
         required: true
-        example: 17
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      content_id: 17
+      content_id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
